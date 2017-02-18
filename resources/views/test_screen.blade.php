@@ -1,6 +1,5 @@
 @extends('layouts.screen')
 
 @section('content')
-    <test></test>
-	<timer></timer>
+    <head-panel></head-panel>
 @endsection
