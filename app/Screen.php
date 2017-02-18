@@ -12,4 +12,13 @@ class Screen extends Model
     public function states() {
         return $this->hasMany('App\ScreenState', 'screen_id');
     }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function($model){
+            $model->public_id = uniqid('', true);
+        });
+    }
 }

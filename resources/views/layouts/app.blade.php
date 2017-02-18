@@ -83,5 +83,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @section('footerJS')
+    @show
 </body>
 </html>

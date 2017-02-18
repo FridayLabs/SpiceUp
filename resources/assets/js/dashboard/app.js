@@ -14,6 +14,7 @@ require('./bootstrap');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('widget_score', require('./components/ScoreWidget.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWidgetsTable extends Migration
+class CreateWidgetTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateWidgetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('state_widgets', function (Blueprint $table) {
+        Schema::table('state_widgets', function (Blueprint $table) {
+            $table->unsignedInteger('widget_id')->nullable();
+        });
+        Schema::create('widgets', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('state_id');
-            $table->string('position'); // x|y
-            $table->string('type');
-            $table->boolean('is_active')->default(false);
+            $table->string('title');
             $table->text('data'); // json
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateWidgetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('state_widgets');
+        Schema::dropIfExists('widgets');
     }
 }

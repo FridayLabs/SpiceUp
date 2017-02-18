@@ -13,8 +13,7 @@ class ScreenStateController extends Controller
         $screen = Screen::findOrFail($screenId);
         return view('screen.state.create', compact('screen'));
     }
-
-
+    
     public function store(Request $request, $screenId)
     {
         $screen = Screen::findOrFail($screenId);
