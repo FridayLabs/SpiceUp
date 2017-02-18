@@ -1,7 +1,7 @@
 <template>
 	<div class="head-panel">
 		test1
-		<Timer></Timer>
+		<timer></timer>
 	</div>
 </template>
 
@@ -9,7 +9,7 @@
 	import Timer from './Timer.vue';
 	export default {
 		components: {
-			'Timer': Timer,
+			'timer': Timer,
 		}
 	}
 </script>
@@ -17,5 +17,8 @@
 <style lang="scss">
 .head-panel {
 	position: relative;
+	.timer {
+		margin: 0 auto;
+	}
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-	<div>
-		Timer
+	<div class="timer">
+		90:00
 	</div>
 </template>
 
@@ -9,5 +9,13 @@
 </script>
 
 <style lang="scss">
-
+.timer {
+	width: 102px;
+	font-size: 24px;
+	font-weight: bold;
+	background: #ffffff;
+	color: #000000;
+	text-align: center;
+	padding: 10px;
+}
 </style>
