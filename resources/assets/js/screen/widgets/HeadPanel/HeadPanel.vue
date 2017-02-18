@@ -16,7 +16,10 @@
 
 <style lang="scss">
 .head-panel {
-	position: relative;
+	position: fixed;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
 	.timer {
 		margin: 0 auto;
 	}
