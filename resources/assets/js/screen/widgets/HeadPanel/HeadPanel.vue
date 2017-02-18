@@ -1,15 +1,17 @@
 <template>
 	<div class="head-panel">
-		test1
+		<score></score>
 		<timer></timer>
 	</div>
 </template>
 
 <script>
 	import Timer from './Timer.vue';
+	import Score from './Score.vue';
 	export default {
 		components: {
 			'timer': Timer,
+			'score': Score
 		}
 	}
 </script>
