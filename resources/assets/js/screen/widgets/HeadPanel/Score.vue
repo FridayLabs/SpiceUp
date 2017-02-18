@@ -1,19 +1,19 @@
 <template>
 	<div class="score">
-		<div class="left-side">
-			<div class="team-color"></div>
-			<div class="team-name">
+		<div class="score__left-side">
+			<div class="score__team-color"></div>
+			<div class="score__team-name">
 				LIV
 			</div>
 		</div>
-		<div class="score-count">
+		<div class="score__count">
 			0 - 0
 		</div>
-		<div class="right-side">
-			<div class="team-name">
+		<div class="score__right-side">
+			<div class="score__team-name">
 				MNC
 			</div>
-			<div class="team-color"></div>
+			<div class="score__team-color"></div>
 		</div>
 	</div>
 </template>
@@ -23,34 +23,66 @@
 </script>
 
 
-<style lang="scss">
+<style lang="scss" rel="stylesheet/scss">
+
+	@import "../../../../sass/screen/variables.scss";
 
 	.score {
 		display: inline-block;
-		border: 1px solid gray;
-		font-size: 20px;
-	}
+		font-size: 0;
+		position: relative;
+		padding-bottom: 10px;
+		margin-bottom: -10px;
+		overflow: hidden;
+		color: $white;
 
-	.left-side, .score-count, .right-side {
-		display: inline-block;
-		text-align: center;
-	}
+		&__left-side, &__count, &__right-side {
+			display: inline-block;
+			text-align: center;
+			padding: 5px 0;
+			font-size: 20px;
+		}
 
-	.team-name, .score-count {
-		width: 102px;
-	}
+		&__count {
+			width: 102px;
+			color: $black;
+			background-color: $secondary_color;
+			-webkit-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.75);
+			box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.75);
+		}
 
-	.score-count .left-side {
-		padding-left: 6px;
-	}
+		&__left-side, &__right-side {
+			width: 108px;
+			background-color: $primary_color;
+		}
 
-	.score-count .right-side {
-		padding-right: 6px;
-	}
+		&__left-side {
+			padding-left: 8px;
+		}
+		
+		&__right-side {
+			padding-right: 8px;
+		}
 
-	.team-color {
-		background-color: darkred;
-		width: 6px;
+		&__team-color {
+			position: absolute;
+			top: 0;
+			bottom: 10px;
+			width: 6px;
+		}
+
+		&__left-side .score__team-color {
+			background-color: cornflowerblue;
+			left: 0;
+		}
+
+		&__right-side .score__team-color {
+			background-color: coral;
+			right: 0;
+		}
+
+
 	}
 
 
