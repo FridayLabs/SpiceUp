@@ -28,7 +28,6 @@
 	@import "../../../../sass/screen/variables.scss";
 
 	.score {
-		display: inline-block;
 		font-size: 0;
 		position: relative;
 		padding-bottom: 10px;
@@ -37,7 +36,7 @@
 		color: $white;
 
 		&__left-side, &__count, &__right-side {
-			display: inline-block;
+			float: left;
 			text-align: center;
 			padding: 5px 0;
 			font-size: 20px;
