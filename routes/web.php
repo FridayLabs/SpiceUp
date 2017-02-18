@@ -12,4 +12,8 @@ Route::post('/screens/create', 'ScreenController@store');
 Route::get('/screens/view/{screenId}', 'ScreenController@view')->name("screenView");
 
 Route::get('/state/create/{screenId}', 'ScreenStateController@create');
+
+Route::get('/test_screen', function() {
+   return view('test_screen');
+});
 Route::post('/state/create/{screenId}', 'ScreenStateController@store');
