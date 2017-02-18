@@ -32,6 +32,12 @@ class ScreenController extends Controller
         return view('screen.create');
     }
 
+    public function view(Request $request, $screenId)
+    {
+        $screen = Screen::findOrFail($screenId);
+        return view('screen.view', compact('screen'));
+    }
+
     public function store(Request $request)
     {
         $screen = new Screen();

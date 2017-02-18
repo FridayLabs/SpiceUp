@@ -9,8 +9,13 @@
                         Create screen state
                     </div>
                     <div class="panel-body">
-                        <form>
+                        <form action="{{ action('ScreenStateController@store', $screen->id) }}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="form-group">
+                                <label for="title">State Title</label>
+                                <input type="text" name="title" class="form-control" placeholder="State title">
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
                         </form>
                     </div>
                 </div>
