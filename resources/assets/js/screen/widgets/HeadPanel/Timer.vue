@@ -11,7 +11,7 @@
 <style lang="scss">
 .timer {
 	width: 102px;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: bold;
 	background: #fff;
 	color: #000;
