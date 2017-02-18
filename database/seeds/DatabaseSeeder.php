@@ -1,6 +1,10 @@
 <?php
 
 use App\User;
+use App\Screen;
+use App\ScreenState;
+use App\Widget;
+use App\StateWidget;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
