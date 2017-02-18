@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/screens', 'ScreenController@index');
+Route::get('/screens', 'ScreenController@index')->name("screens");
 Route::get('/screens/create', 'ScreenController@create');
 Route::post('/screens/create', 'ScreenController@store');
 Route::get('/screens/view/{screenId}', 'ScreenController@view');
