@@ -10,11 +10,12 @@
 
 <style lang="scss">
 .timer {
+	@import "../../../../sass/screen/variables.scss";
 	width: 102px;
 	font-size: 20px;
 	font-weight: bold;
-	background: #fff;
-	color: #000;
+	background: $white;
+	color: $black;
 	text-align: center;
 	padding: 5px 2px;
 	text-overflow: ellipsis;
