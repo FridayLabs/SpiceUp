@@ -17,5 +17,8 @@
 	color: #000;
 	text-align: center;
 	padding: 5px 2px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
 }
 </style>
