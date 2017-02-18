@@ -1,6 +1,6 @@
 <template>
 	<div class="head-panel">
-		<score></score>
+		<score teamA="LIV" teamB="MNC"></score>
 		<timer></timer>
 	</div>
 </template>

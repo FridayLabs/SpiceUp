@@ -3,7 +3,7 @@
 		<div class="score__left-side">
 			<div class="score__team-color"></div>
 			<div class="score__team-name">
-				LIV
+				{{teamA}}
 			</div>
 		</div>
 		<div class="score__count">
@@ -11,7 +11,7 @@
 		</div>
 		<div class="score__right-side">
 			<div class="score__team-name">
-				MNC
+				{{teamB}}
 			</div>
 			<div class="score__team-color"></div>
 		</div>
@@ -19,7 +19,11 @@
 </template>
 
 <script>
-	export default {}
+	export default {
+		props: [
+			'teamA', 'teamB'
+		]
+	}
 </script>
 
 
