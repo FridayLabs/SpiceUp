@@ -13,7 +13,16 @@
                 </div>
 
                 <div class="panel-body">
-
+                    <table class="table table-bordered table-responsive">
+                        @foreach ($screens as $screen)
+                        <tr>
+                            <td>{{$screen->id}}</td>
+                            <td>{{$screen->title}}</td>
+                            <td>{{$screen->public_id}}</td>
+                            <td>{{$screen->user->name}}</td>
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>

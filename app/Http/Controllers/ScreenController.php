@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Screen;
 use Illuminate\Http\Request;
+use Auth;
 
 class ScreenController extends Controller
 {
@@ -24,7 +25,8 @@ class ScreenController extends Controller
      */
     public function index()
     {
-        return view('screen.index');
+        $screens = Screen::query()->where('user_id', Auth::id())->get()->all();
+        return view('screen.index', compact('screens'));
     }
 
     public function create()
