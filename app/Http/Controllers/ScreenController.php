@@ -18,14 +18,9 @@ class ScreenController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $screens = Screen::query()->where('user_id', Auth::id())->get()->all();
+        $screens = $request->user()->screens()->get()->all();
         return view('screen.index', compact('screens'));
     }
 
@@ -45,7 +40,7 @@ class ScreenController extends Controller
         $screen = new Screen();
         $screen->public_id = uniqid('', true); // TODO
         $screen->title = $request->get('title');
-        $screen->save();
+        $request->user()->screens()->save($screen);
         return redirect()->action('ScreenStateController@create', ['screen_id' => $screen->id]);
     }
 }
