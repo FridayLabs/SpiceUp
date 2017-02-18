@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Screen;
 use Illuminate\Http\Request;
 
 class ScreenController extends Controller
@@ -29,5 +30,14 @@ class ScreenController extends Controller
     public function create()
     {
         return view('screen.create');
+    }
+
+    public function store(Request $request)
+    {
+        $screen = new Screen();
+        $screen->public_id = uniqid('', true); // TODO
+        $screen->title = $request->get('title');
+        $screen->save();
+        return redirect()->action('ScreenStateController@create', ['screen_id' => $screen->id]);
     }
 }
