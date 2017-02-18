@@ -13,9 +13,9 @@
 	width: 102px;
 	font-size: 24px;
 	font-weight: bold;
-	background: #ffffff;
-	color: #000000;
+	background: #fff;
+	color: #000;
 	text-align: center;
-	padding: 10px;
+	padding: 5px 2px;
 }
 </style>
