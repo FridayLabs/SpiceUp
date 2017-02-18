@@ -1,7 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.screen')
 
 @section('content')
-    <div class="root">
-        <example></example>
-    </div>
+    <test></test>
 @endsection
