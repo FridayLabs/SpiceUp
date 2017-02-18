@@ -8,7 +8,7 @@
 	export default {}
 </script>
 
-<style lang="scss">
+<style lang="scss" rel="stylesheet/scss" >
 .timer {
 	@import "../../../../sass/screen/variables.scss";
 	width: 102px;
