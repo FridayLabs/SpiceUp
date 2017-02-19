@@ -13,12 +13,10 @@ class CreateWidgetTable extends Migration
      */
     public function up()
     {
-        Schema::table('state_widgets', function (Blueprint $table) {
-            $table->unsignedInteger('widget_id')->nullable();
-        });
         Schema::create('widgets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('type');
             $table->text('data'); // json
             $table->timestamps();
         });

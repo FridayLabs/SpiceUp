@@ -7,23 +7,15 @@ use View;
 
 class Widget extends Model
 {
-    private $parsedData = array();
+    protected $beh;
 
-    public function __construct(array $attributes = array())
+    public function getBehaviourAttribute()
     {
-        parent::__construct($attributes);
-        $this->parseData();
-    }
-
-    public function getData($key) {
-        return (isset($this->parsedData[$key]))?$this->parsedData[$key]:null;
+        if (!$this->beh) {
+            $class = "App\\Widgets\\{$this->type}Widget";
+            $this->beh = new $class($this);
+        }
+        return $this->beh;
     }
     
-    public function parseData() {
-        $this->parsedData = json_decode($this->data, true);
-    }
-
-    public function getVueTemplate() {
-        return '<core_widget></core_widget>';
-    }
 }

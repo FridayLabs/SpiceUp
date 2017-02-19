@@ -10,4 +10,9 @@ class Team extends Model
     {
         return $this->hasMany(Player::class);
     }
+
+    public function getShortTitleAttribute()
+    {
+        return strtoupper(substr($this->title, 0, 3));
+    }
 }

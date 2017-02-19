@@ -35,6 +35,9 @@ class DatabaseSeeder extends Seeder
 
         foreach ($teams as $team_home) {
             foreach ($teams as $team_away) {
+                if($team_home->id == $team_away->id) {
+                    continue;
+                }
                 $tournament->games()->save(
                     factory(\App\Game::class)->make([
                         'team_home' => $team_home->id,
@@ -56,13 +59,13 @@ class DatabaseSeeder extends Seeder
 
         $widget = Widget::create([
             'title' => 'score',
-            'data' => "[]"
+            'type' => 'Score',
+            'data' => '[]'
         ]);
 
         $stateWidget = StateWidget::create([
             'state_id' => $state->id,
             'position' => '[120,20]',
-            'type' => '',
             'data' => '',
             'widget_id' => $widget->id
         ]);
