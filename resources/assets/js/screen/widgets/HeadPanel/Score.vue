@@ -1,19 +1,19 @@
 <template>
 	<div class="score">
 		<div class="score__left-side">
-			<div class="score__team-color"></div>
+			<div class="score__team-color" v-bind:style="{ backgroundColor: scoreData.teamA.color1 }"></div>
 			<div class="score__team-name">
-				{{teamA}}
+				{{scoreData.teamA.name}}
 			</div>
 		</div>
 		<div class="score__count">
-			0 - 0
+			{{scoreData.teamA.goals}} - {{scoreData.teamB.goals}}
 		</div>
 		<div class="score__right-side">
 			<div class="score__team-name">
-				{{teamB}}
+				{{scoreData.teamB.name}}
 			</div>
-			<div class="score__team-color"></div>
+			<div class="score__team-color" v-bind:style="{ backgroundColor: scoreData.teamB.color1 }"></div>
 		</div>
 	</div>
 </template>
@@ -21,8 +21,13 @@
 <script>
 	export default {
 		props: [
-			'teamA', 'teamB'
-		]
+			'scoreData', 'timerData'
+		],
+		computed: {
+			teamAcolorFirst: function () {
+				return
+			}
+		}
 	}
 </script>
 
