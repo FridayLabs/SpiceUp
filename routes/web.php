@@ -28,3 +28,9 @@ Route::post('/state/create/{screenId}', 'ScreenStateController@store');
 Route::resource('/tournaments', 'TournamentsController');
 Route::resource('/games', 'GamesController');
 Route::resource('/teams', 'TeamsController');
+
+
+Route::get('/test_event', function() {
+        $w = \App\StateWidget::first();
+        dd($w->widget);
+});

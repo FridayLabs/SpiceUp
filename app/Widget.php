@@ -7,7 +7,9 @@ use View;
 
 class Widget extends Model
 {
-    private $parsedData = array();
+    protected $table = 'widgets';
+
+    private $parsedData = [];
 
     public function __construct(array $attributes = array())
     {
@@ -15,15 +17,18 @@ class Widget extends Model
         $this->parseData();
     }
 
-    public function getData($key) {
-        return (isset($this->parsedData[$key]))?$this->parsedData[$key]:null;
+    public function getData($key)
+    {
+        return array_get($this->parsedData, $key);
     }
-    
-    public function parseData() {
+
+    public function parseData()
+    {
         $this->parsedData = json_decode($this->data, true);
     }
 
-    public function getVueTemplate() {
+    public function getVueTemplate()
+    {
         return '<core_widget></core_widget>';
     }
 }

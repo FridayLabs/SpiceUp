@@ -62,7 +62,7 @@ class DatabaseSeeder extends Seeder
         $stateWidget = StateWidget::create([
             'state_id' => $state->id,
             'position' => '[120,20]',
-            'type' => '',
+            'type' => 'Score',
             'data' => '',
             'widget_id' => $widget->id
         ]);

@@ -37,7 +37,10 @@ class TournamentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $t = new Tournament;
+        $t->title = $request->get('title');
+        $t->save();
+        return redirect()->action('TournamentsController@show', ['id' => $t->id]);
     }
 
     /**
@@ -48,7 +51,7 @@ class TournamentsController extends Controller
      */
     public function show(Tournament $tournament)
     {
-        //
+        return view('tournament.view', compact('tournament'));
     }
 
     /**
