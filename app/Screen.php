@@ -28,10 +28,10 @@ class Screen extends Model
 
     public function getWidget($id)
     {
-        $this->activeState->
-        foreach ( as $item) {
+//        $this->activeState->
+//        foreach ( as $item) {
+//        }
 
-        }
     }
 
     public static function boot()
