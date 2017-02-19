@@ -62,6 +62,8 @@ class WidgetController extends Controller
         $stateWidget->position = $position;
         $stateWidget->save();
 
+
+        event(new TestEvent($stateWidget));
         return array($stateWidget->title);
     }
 

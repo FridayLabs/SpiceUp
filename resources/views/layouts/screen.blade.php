@@ -19,6 +19,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+    @yield('headJS')
 </head>
 <body>
     <div id="app">
@@ -26,6 +27,7 @@
     </div>
 
     <!-- Scripts -->
+    @yield('footerJS')
     <script src="{{ asset('js/screen.js') }}"></script>
 </body>
 </html>

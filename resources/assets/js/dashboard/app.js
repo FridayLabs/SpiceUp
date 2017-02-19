@@ -21,3 +21,8 @@ Vue.component('widget_score', require('./components/ScoreWidget.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+Echo.channel('screen.1111')
+    .listen('TestEvent', function (e) {
+        console.log(e)
+    });
