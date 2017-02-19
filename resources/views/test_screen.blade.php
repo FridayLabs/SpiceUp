@@ -8,18 +8,18 @@
 					goals: {{$game->score_home}},
 				},
 				teamB: {
-						goals: {{$game->score_away}},
+					goals: {{$game->score_away}},
 				}
 			},
 			timerData: {
 				status: false,
-					start: 0,
-					end: 0,
+				start: 0,
+				end: 0,
 			},
 			substitutionData: {
 				team: 'home',
-					playerIn: 'Firmino',
-					playerOut: 'Lallana',
+				playerIn: 'Firmino',
+				playerOut: 'Lallana',
 			},
 			teamData: {
 				teamA: {
@@ -28,7 +28,7 @@
 				},
 				teamB: {
 					color1: '#1729ff',
-					nameShort: '{$game->teamAway->shortTitle}}',
+					nameShort: '{{$game->teamAway->shortTitle}}',
 				}
 			},
 		};
