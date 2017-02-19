@@ -11,6 +11,7 @@ class CreateScreensTable extends Migration
         Schema::create('screens', function (Blueprint $table) {
             $table->increments('id');
             $table->string('public_id')->unique();
+            $table->unsignedInteger('game_id')->nullable();
             $table->string('title');
             $table->unsignedInteger('active_state')->nullable();
             $table->timestamps();

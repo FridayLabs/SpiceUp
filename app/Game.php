@@ -10,4 +10,14 @@ class Game extends Model
     {
         return $this->belongsTo(Tournament::class);
     }
+
+    public function teamHome()
+    {
+        return $this->belongsTo(Team::class, 'team_home');
+    }
+
+    public function teamAway()
+    {
+        return $this->belongsTo(Team::class, 'team_away');
+    }
 }

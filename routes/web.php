@@ -19,8 +19,17 @@ Route::get('/state/create/{screenId}', 'ScreenStateController@create')->name("st
 Route::get('/widget/get/{stateWidgetId}', 'WidgetController@get');
 Route::post('/widget/save/{stateWidgetId}', 'WidgetController@save');
 
-Route::get('/test_screen', function () {
-    return view('test_screen');
+Route::get('/test_screen/{id}', function ($id) {
+
+    $screen = \App\Screen::where('public_id', $id)
+        ->with('game.teamHome')
+        ->with('game.teamAway')
+        ->firstOrFail();
+
+    return view('test_screen', [
+        'screen' => $screen,
+        'game' => $screen->game
+    ]);
 });
 Route::post('/state/create/{screenId}', 'ScreenStateController@store');
 
@@ -29,8 +38,3 @@ Route::resource('/tournaments', 'TournamentsController');
 Route::resource('/games', 'GamesController');
 Route::resource('/teams', 'TeamsController');
 
-
-Route::get('/test_event', function() {
-        $w = \App\StateWidget::first();
-        dd($w->widget->behaviour);
-});
