@@ -2,12 +2,12 @@ window.Vue = require('vue');
 
 Vue.component('head-panel', require('./widgets/HeadPanel/HeadPanel.vue'));
 
-const app = new Vue({
+window.app = new Vue({
 	el: '#app',
 	data: {
 		scoreData: {
 			teamA: {
-				color1: '#cc0000',
+				color1: '#c00',
 				name: 'LIV',
 				goals: 1,
 			},
@@ -20,10 +20,7 @@ const app = new Vue({
 		timerData: {
 			status: false,
 			start: 0,
-			end: 3600,
+			end: 0,
 		}
-	},
-	methods: {
-
 	}
 });

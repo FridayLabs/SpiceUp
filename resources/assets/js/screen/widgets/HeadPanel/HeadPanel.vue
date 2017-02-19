@@ -19,7 +19,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" rel="stylesheet/scss">
 .head-panel {
 	position: fixed;
 	top: 10px;
