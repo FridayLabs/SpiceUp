@@ -4,6 +4,8 @@ window._ = require('lodash');
 
 window.$ = require('jquery');
 
+const vueStrap = require('vue-strap');
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -19,6 +21,8 @@ require('bootstrap-sass');
  */
 
 window.Vue = require('vue');
+
+Vue.use(vueStrap);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

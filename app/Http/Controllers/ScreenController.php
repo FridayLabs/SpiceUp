@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
 use App\Screen;
 use Illuminate\Http\Request;
 use Auth;
@@ -26,7 +27,9 @@ class ScreenController extends Controller
 
     public function create()
     {
-        return view('screen.create');
+        return view('screen.create', [
+            'games' => Game::all()
+        ]);
     }
 
     public function view(Request $request, $screenId)
@@ -40,6 +43,7 @@ class ScreenController extends Controller
         $screen = new Screen();
         $screen->public_id = uniqid('', true); // TODO
         $screen->title = $request->get('title');
+        $screen->game_id = $request->get('game_id');
         $request->user()->screens()->save($screen);
         return redirect()->action('ScreenStateController@create', ['screen_id' => $screen->id]);
     }

@@ -17,7 +17,6 @@ class CreateWidgetsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('state_id');
             $table->string('position'); // x|y
-            $table->string('type');
             $table->boolean('is_active')->default(false);
             $table->text('data'); // json
             $table->timestamps();

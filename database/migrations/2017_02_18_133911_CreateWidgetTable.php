@@ -19,6 +19,7 @@ class CreateWidgetTable extends Migration
         Schema::create('widgets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('type');
             $table->text('data'); // json
             $table->timestamps();
         });
