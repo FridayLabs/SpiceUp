@@ -23,11 +23,7 @@ class Widget extends Model
         $this->parsedData = json_decode($this->data, true);
     }
 
-    public function renderScripts() {
-        
-    }
-
-    public function renderAdminForm() {
-        
+    public function getVueTemplate() {
+        return '<core_widget></core_widget>';
     }
 }

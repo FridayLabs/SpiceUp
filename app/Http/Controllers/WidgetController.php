@@ -41,10 +41,34 @@ class WidgetController extends Controller
         return view('screen.view', compact('screen'));
     }
 
+    public function get(Request $request, $stateWidgetId) {
+        $stateWidget = StateWidget::findOrFail($stateWidgetId);
+        return array(
+            "is_active" => $stateWidget->is_active,
+            "position" => $stateWidget->position,
+            "data" => json_decode($stateWidget->data, true),
+        );
+    }
+
+    public function save(Request $request, $stateWidgetId) {
+        $stateWidget = StateWidget::findOrFail($stateWidgetId);
+
+        $data = $request->get("data");
+        $is_active = $request->get("is_active");
+        $position = $request->get("position");
+        $stateWidget->data = json_encode($data);
+        $stateWidget->is_active = $is_active;
+        $stateWidget->position = $position;
+        $stateWidget->save();
+
+        return array($stateWidget->title);
+    }
+
     public function update(Request $request, $stateWidgetId)
     {
         $stateWidget = StateWidget::findOrFail($stateWidgetId);//todo check user access
 
+        
         
         $screen = new Screen();
         $screen->public_id = uniqid('', true); // TODO

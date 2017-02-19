@@ -25,7 +25,7 @@
                             <div class="row">
                             @foreach ($state->widgets()->get() as $widgetLink)
                                 <div class="col-xs-4">
-                                    <widget_score></widget_score>
+                                    <widget_score state-widget-id="{{$widgetLink->id}}"></widget_score>
                                 </div>
                             @endforeach
                             <div class="col-xs-4">
@@ -45,12 +45,3 @@
     </div>
 </div>
 @endsection
-
-@section('footerJS')
-    @parent
-    @foreach ($screen->states()->get() as $state)
-        @foreach ($state->widgets()->get() as $widgetLink)
-            {{$widgetLink->widget->renderScripts()}}
-        @endforeach
-    @endforeach
-@show
