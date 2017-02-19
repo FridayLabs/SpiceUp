@@ -9,15 +9,19 @@ window.echo = new Echo({
 });
 
 Vue.component('head-panel', require('./widgets/HeadPanel/HeadPanel.vue'));
-Vue.component('substitution', require('./widgets/Substitution.vue'));
+Vue.component('substitution', require('./widgets/Substitution/Substitution.vue'));
 
-window.echo.channel('myscreen')
-	.listen('TestEvent', () => {
-		alert('i');
-	});
 window.app = new Vue({
 	el: '#app',
 	data: window.state,
+	created: function () {
+		window.echo.channel('myscreen')
+			.listen('.TimerStart', this.timerStart)
+			.listen('.TimerPause', this.timerPause)
+			.listen('.TimerEnd', this.timerEnd)
+			.listen('.AddGoal', this.addGoal)
+			.listen('.ScoreDataUpdate', this.scoreDataUpdate)
+	},
 	methods: {
 		timerStart: function () {
 			this.timerData.status = 'start'

@@ -10,26 +10,26 @@
 				goals: {{$game->score_away}},
 			}
 		},
-	timerData: {
-		status: false,
-			start: 0,
-			end: 0,
-	},
-	substitutionData: {
-		team: 'teamA',
-			playerIn: 'Firmino',
-			playerOut: 'Lallana',
-	},
-	teamData: {
-		teamA: {
-			color1: '#c00',
-				nameShort: '{{$game->teamHome->shortTitle}}',
+		timerData: {
+			status: false,
+				start: 0,
+				end: 10,
 		},
-		teamB: {
-			color1: '#1729ff',
-				nameShort: '{{$game->teamAway->shortTitle}}',
-		}
-	},
+		substitutionData: {
+			team: 'teamB',
+			playerIn: '12 Firmino',
+			playerOut: '11 Lallana',
+		},
+		teamData: {
+			teamA: {
+				color1: '#c00',
+					nameShort: '{{$game->teamHome->shortTitle}}',
+			},
+			teamB: {
+				color1: '#1729ff',
+					nameShort: '{{$game->teamAway->shortTitle}}',
+			}
+		},
 	};
 </script>
 @endsection

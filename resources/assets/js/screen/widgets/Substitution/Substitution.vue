@@ -1,7 +1,7 @@
 <template>
     <div class="substitution">
         <div class="substitution__container">
-            <div class="substitution__team-color"></div>
+            <div class="substitution__team-color" v-bind:style="{ backgroundColor: teamData[substitutionData.team].color1 }"></div>
             <div class="substitution__team-name">
                 {{teamData[substitutionData.team].nameShort}}
             </div>
@@ -13,14 +13,14 @@
             <div class="substitution__player-shadow"></div>
             <div class="substitution__arrow in"></div>
             <div class="substitution__player-name">
-                69 Old Guy
+                {{substitutionData.playerIn}}
             </div>
         </div>
         <div class="substitution__player">
             <div class="substitution__player-shadow"></div>
             <div class="substitution__arrow out"></div>
             <div class="substitution__player-name">
-                69 New Guy
+                {{substitutionData.playerOut}}
             </div>
         </div>
     </div>
@@ -34,15 +34,14 @@
 
 
 <style lang="scss" rel="stylesheet/scss">
-    body {
-        background-color: #0d3625;
-    }
+    @import "../../../../sass/screen/variables.scss";
+
     .substitution {
+        display: none;
         position: fixed;
         bottom: 10px;
         left: 10px;
         font-size: 20px;
-        /*border: 1px solid #e5e5e5;*/
         overflow: hidden;
 
         &__team-color {
@@ -50,7 +49,6 @@
             top: 0;
             bottom: 0;
             width: 6px;
-            background-color: cornflowerblue;
             left: 0;
         }
 
@@ -63,7 +61,13 @@
         &__team-name, &__label {
             padding: 5px 10px;
             float: left;
-            background-color: #fff;
+            background-color: $primary_color;
+            color: $black;
+        }
+
+        &__label {
+            background-color: $secondary_color;
+            color: $black;
         }
 
         &__player-name {
