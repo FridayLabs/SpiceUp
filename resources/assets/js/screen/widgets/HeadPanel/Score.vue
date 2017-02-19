@@ -1,9 +1,9 @@
 <template>
 	<div class="score">
 		<div class="score__left-side">
-			<div class="score__team-color" v-bind:style="{ backgroundColor: scoreData.teamA.color1 }"></div>
+			<div class="score__team-color" v-bind:style="{ backgroundColor: teamData.teamA.color1 }"></div>
 			<div class="score__team-name">
-				{{scoreData.teamA.name}}
+				{{teamData.teamA.nameShort}}
 			</div>
 		</div>
 		<div class="score__count">
@@ -11,9 +11,9 @@
 		</div>
 		<div class="score__right-side">
 			<div class="score__team-name">
-				{{scoreData.teamB.name}}
+				{{teamData.teamB.nameShort}}
 			</div>
-			<div class="score__team-color" v-bind:style="{ backgroundColor: scoreData.teamB.color1 }"></div>
+			<div class="score__team-color" v-bind:style="{ backgroundColor: teamData.teamB.color1 }"></div>
 		</div>
 	</div>
 </template>
@@ -21,13 +21,8 @@
 <script>
 	export default {
 		props: [
-			'scoreData', 'timerData'
+			'teamData', 'scoreData'
 		],
-		computed: {
-			teamAcolorFirst: function () {
-				return
-			}
-		}
 	}
 </script>
 
