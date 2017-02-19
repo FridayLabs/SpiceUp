@@ -28,7 +28,6 @@
 
 
 <style lang="scss" rel="stylesheet/scss">
-
 	@import "../../../../sass/screen/variables.scss";
 
 	.score {
@@ -37,13 +36,14 @@
 		padding-bottom: 10px;
 		margin-bottom: -10px;
 		overflow: hidden;
-		color: $white;
+		color: $black;
 
 		&__left-side, &__count, &__right-side {
 			float: left;
 			text-align: center;
 			padding: 5px 0;
 			font-size: 20px;
+			font-weight: bold;
 		}
 
 		&__count {
@@ -84,10 +84,6 @@
 			background-color: coral;
 			right: 0;
 		}
-
-
 	}
-
-
 </style>
 
