@@ -1,6 +1,6 @@
 <template>
 	<div class="head-panel">
-		<score v-bind:score-data="scoreData"></score>
+		<score v-bind:team-data="teamData" v-bind:score-data="scoreData"></score>
 		<timer v-bind:timer-data="timerData"></timer>
 	</div>
 </template>
@@ -10,7 +10,7 @@
 	import Score from './Score.vue';
 	export default {
 		props: [
-			'scoreData', 'timerData'
+			'teamData', 'scoreData', 'timerData', 'substitutionData'
 		],
 		components: {
 			'timer': Timer,
@@ -19,7 +19,7 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" rel="stylesheet/scss">
 .head-panel {
 	position: fixed;
 	top: 10px;

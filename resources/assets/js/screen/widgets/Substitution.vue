@@ -3,7 +3,7 @@
         <div class="substitution__container">
             <div class="substitution__team-color"></div>
             <div class="substitution__team-name">
-                LIV
+                {{teamData[substitutionData.team].nameShort}}
             </div>
             <div class="substitution__label">
                 Substitution
@@ -28,6 +28,7 @@
 
 <script>
     export default {
+    	props: ['substitutionData', 'teamData']
     }
 </script>
 
