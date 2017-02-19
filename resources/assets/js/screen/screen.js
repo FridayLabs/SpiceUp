@@ -13,36 +13,7 @@ Vue.component('head-panel', require('./widgets/HeadPanel/HeadPanel.vue'));
 
 window.app = new Vue({
 	el: '#app',
-	data: {
-		teamData: {
-			teamA: {
-				color1: '#c00',
-				nameShort: 'LIV',
-			},
-			teamB: {
-				color1: '#1729ff',
-				nameShort: 'MNC',
-			}
-		},
-		substitutionData: {
-			team: 'home',
-			playerIn: 'Firmino',
-			playerOut: 'Lallana',
-		},
-		scoreData: {
-			teamA: {
-				goals: 1,
-			},
-			teamB: {
-				goals: 2,
-			}
-		},
-		timerData: {
-			status: false,
-			start: 0,
-			end: 0,
-		},
-	},
+	data: window.state,
 	created: function () {
 		/*Echo.channel('screen')
 			.listen('TimerStart', this.timerStart)
