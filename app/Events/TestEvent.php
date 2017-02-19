@@ -17,18 +17,18 @@ class TestEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var Widget
+     * @var StateWidget
      */
-    public $widget;
+    public $stateWidget;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(StateWidget $widget)
+    public function __construct(StateWidget $stateWidget)
     {
-        $this->widget = $widget;
+        $this->stateWidget = $stateWidget;
     }
 
     /**
@@ -38,6 +38,6 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('events.' . $this->widget->id);
+        return new PrivateChannel('screen.' . $this->stateWidget->state->screen->public_id);
     }
 }

@@ -17,4 +17,5 @@ class Widget extends Model
         }
         return $this->beh;
     }
+    
 }

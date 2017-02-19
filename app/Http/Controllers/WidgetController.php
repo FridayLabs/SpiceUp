@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TestEvent;
 use App\Screen;
 use App\StateWidget;
 use Illuminate\Http\Request;
@@ -74,6 +75,8 @@ class WidgetController extends Controller
         $screen->public_id = uniqid('', true); // TODO
         $screen->title = $request->get('title');
         $screen->save();
+        
+        event(new TestEvent($stateWidget));
         return redirect()->action('ScreenStateController@create', ['screen_id' => $screen->id]);
     }
 }
