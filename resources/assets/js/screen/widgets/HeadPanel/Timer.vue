@@ -1,21 +1,14 @@
 <template>
 	<div class="timer">
-		90:00
+		{{timerData.end}}
 	</div>
 </template>
 
 <script>
 	export default {
-		data: function () {
-			return {
-				startTime: ''
-			}
-		},
-		methods: {
-			startTimer: function () {
-
-			}
-		}
+		props: [
+			'timerData'
+		],
 	}
 </script>
 

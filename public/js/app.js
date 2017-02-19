@@ -45396,7 +45396,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/vagrant_data/SpiceUp/resources/assets/js/dashboard/components/CoreWidget.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\SpiceUp\\resources\\assets\\js\\dashboard\\components\\CoreWidget.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CoreWidget.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45430,7 +45430,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/vagrant_data/SpiceUp/resources/assets/js/dashboard/components/Example.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\SpiceUp\\resources\\assets\\js\\dashboard\\components\\Example.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Example.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45464,7 +45464,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/vagrant_data/SpiceUp/resources/assets/js/dashboard/components/Modal.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\SpiceUp\\resources\\assets\\js\\dashboard\\components\\Modal.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Modal.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45498,7 +45498,7 @@ var Component = __webpack_require__(1)(
   /* cssModules */
   null
 )
-Component.options.__file = "/vagrant_data/SpiceUp/resources/assets/js/dashboard/components/ScoreWidget.vue"
+Component.options.__file = "C:\\xampp\\htdocs\\SpiceUp\\resources\\assets\\js\\dashboard\\components\\ScoreWidget.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] ScoreWidget.vue: functional components are not supported with templates, they should use render functions.")}
 
