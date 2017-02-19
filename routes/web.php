@@ -18,6 +18,9 @@ Route::get('/screens/view/{screenId}', 'ScreenController@view')->name('screenVie
 Route::get('/state/create/{screenId}', 'ScreenStateController@create')->name("stateCreate");
 Route::get('/widget/get/{stateWidgetId}', 'WidgetController@get');
 Route::post('/widget/save/{stateWidgetId}', 'WidgetController@save');
+Route::post('/broadcasting/auth', function() {
+    return 'ok';
+});
 
 Route::get('/test_screen/{id}', function ($id) {
 

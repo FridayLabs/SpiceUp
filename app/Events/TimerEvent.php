@@ -38,7 +38,7 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        //return ["myscreen"];
-        return new Channel('myscreen');
+        return ["conversation.1"];
+        //return new Channel('screen.' . $this->stateWidget->state->screen->public_id);
     }
 }
