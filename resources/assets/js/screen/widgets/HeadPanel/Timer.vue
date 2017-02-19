@@ -5,7 +5,18 @@
 </template>
 
 <script>
-	export default {}
+	export default {
+		data: function () {
+			return {
+				startTime: ''
+			}
+		},
+		methods: {
+			startTimer: function () {
+
+			}
+		}
+	}
 </script>
 
 <style lang="scss" rel="stylesheet/scss" >
