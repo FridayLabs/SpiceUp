@@ -1,5 +1,5 @@
 @extends('layouts.screen')
 
 @section('content')
-    <test></test>
+	<head-panel></head-panel>
 @endsection
