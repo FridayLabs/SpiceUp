@@ -1,8 +1,8 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask">
-            <div class="modal-wrapper">
-                <div class="modal-container">
+        <div class="modal" style="display: block;">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
                     <div class="modal-header">
                         <slot name="header">
@@ -18,9 +18,11 @@
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            default footer
-                            <button class="modal-default-button" @click="$emit('close')">
-                                OK
+                            <button class="btn btn-success" @click="$emit('add')">
+                                Add
+                            </button>
+                            <button class="btn btn-default" @click="$emit('close')">
+                                Cancel
                             </button>
                         </slot>
                     </div>

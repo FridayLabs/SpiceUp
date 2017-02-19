@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="input-group">
-                      <input type="text" class="form-control" v-model="_position" placeholder="[120,20]">
+                      <input type="text" class="form-control" v-model="true_position" placeholder="[120,20]">
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
                         <i class="glyphicon glyphicon-map-marker"></i>
@@ -17,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <input type="text" class="form-control" v-model="_is_active">
+                    <input type="checkbox" class="form-control" v-model="true_is_active"> Widget is active?
                 </div>
             </div>
         </div>
@@ -29,14 +29,22 @@
         props: ["is_active", "position"],
         data: function () {
             return {
-                _position: this.position,
-                _is_active: this.is_active
+                true_is_active: this.is_active,
+                true_position: this.position
             };
         },
         watch: {
-            _position: function (val) {
-                this.position = this._position;
-                this.$emit('position');
+            is_active: function(val) {
+                this.true_is_active = val;
+            },
+            position: function(val) {
+                this.true_position = val;
+            },
+            true_position: function (value) {
+                this.$emit("onposition", value);
+            },
+            true_is_active: function (value) {
+                this.$emit("onisactive", value);
             }
         },
         mounted() {
