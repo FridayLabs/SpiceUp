@@ -14,8 +14,7 @@ class StateWidget extends Model
 
     public function widget()
     {
-        $class = "App\\Models\\Widgets\\{$this->type}Widget";
-        return $this->belongsTo($class, 'widget_id');
+        return $this->belongsTo(Widget::class, 'widget_id');
     }
 
     public function saveWidget(Request $request)

@@ -32,5 +32,5 @@ Route::resource('/teams', 'TeamsController');
 
 Route::get('/test_event', function() {
         $w = \App\StateWidget::first();
-        dd($w->widget);
+        dd($w->widget->behaviour);
 });
