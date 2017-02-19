@@ -16,6 +16,7 @@ class CreateWidgetsTable extends Migration
         Schema::create('state_widgets', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('state_id');
+            $table->unsignedInteger('widget_id')->nullable();
             $table->string('position'); // x|y
             $table->boolean('is_active')->default(false);
             $table->text('data'); // json

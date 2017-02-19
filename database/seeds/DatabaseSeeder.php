@@ -35,6 +35,9 @@ class DatabaseSeeder extends Seeder
 
         foreach ($teams as $team_home) {
             foreach ($teams as $team_away) {
+                if($team_home->id == $team_away->id) {
+                    continue;
+                }
                 $tournament->games()->save(
                     factory(\App\Game::class)->make([
                         'team_home' => $team_home->id,
