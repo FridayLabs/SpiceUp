@@ -5,18 +5,18 @@
 		scoreData: {
 			teamA: {
 				goals: {{$game->score_home}},
-	},
-	teamB: {
-		goals: {{$game->score_away}},
-	}
-	},
+			},
+			teamB: {
+				goals: {{$game->score_away}},
+			}
+		},
 	timerData: {
 		status: false,
 			start: 0,
 			end: 0,
 	},
 	substitutionData: {
-		team: 'home',
+		team: 'teamA',
 			playerIn: 'Firmino',
 			playerOut: 'Lallana',
 	},
