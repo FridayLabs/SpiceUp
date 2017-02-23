@@ -12,7 +12,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class TestEvent implements ShouldBroadcast
+class GoalEvent implements ShouldBroadcast
 {
     use SerializesModels;
 
@@ -20,15 +20,19 @@ class TestEvent implements ShouldBroadcast
      * @var StateWidget
      */
     public $stateWidget;
+    public $score;
+    public $team;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(StateWidget $stateWidget)
+    public function __construct(StateWidget $stateWidget, $team, $score)
     {
-        $this->stateWidget = 1;
+        $this->stateWidget = $stateWidget;
+        $this->team = $team;
+        $this->score = $score;
     }
 
     /**
@@ -38,7 +42,6 @@ class TestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ["myscreen"];
-        //return new Channel('myscreen');
+        return ["screen.".$this->stateWidget->state->screen->public_id];
     }
 }

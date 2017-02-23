@@ -15,11 +15,11 @@ window.app = new Vue({
 	el: '#app',
 	data: window.state,
 	created: function () {
-		window.echo.channel('myscreen')
+		window.echo.channel('screen.' + window.screen.public_id)
 			.listen('.TimerStart', this.timerStart)
 			.listen('.TimerPause', this.timerPause)
 			.listen('.TimerEnd', this.timerEnd)
-			.listen('.AddGoal', this.addGoal)
+			.listen('.App.Events.GoalEvent', this.addGoal)
 			.listen('.ScoreDataUpdate', this.scoreDataUpdate)
 	},
 	methods: {
@@ -43,3 +43,4 @@ window.app = new Vue({
 		},
 	}
 });
+

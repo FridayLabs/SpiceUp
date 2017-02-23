@@ -49,6 +49,7 @@ class DatabaseSeeder extends Seeder
 
         $screen = Screen::create([
             'title' => 'keke screen',
+            'game_id' => 1,
             'user_id' => $user->id
         ]);
 

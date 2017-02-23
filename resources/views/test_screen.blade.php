@@ -1,6 +1,9 @@
 @extends('layouts.screen')
 @section('headJS')
 <script>
+	window.screen = {
+		public_id: '{{$screen->public_id}}'
+	};
 	window.state = {
 		scoreData: {
 			teamA: {

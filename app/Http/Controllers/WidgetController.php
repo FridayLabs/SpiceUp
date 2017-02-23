@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\GoalEvent;
 use App\Events\TestEvent;
 use App\Screen;
 use App\StateWidget;
@@ -57,13 +58,17 @@ class WidgetController extends Controller
         $data = $request->get("data");
         $is_active = $request->get("is_active");
         $position = $request->get("position");
+
+
+        
         $stateWidget->data = json_encode($data);
         $stateWidget->is_active = $is_active;
         $stateWidget->position = $position;
         $stateWidget->save();
-
-
-        event(new TestEvent($stateWidget));
+        
+        
+        
+        event(new GoalEvent($stateWidget, 'teamA', random_int(2,10)));
         return array($stateWidget->title);
     }
 
