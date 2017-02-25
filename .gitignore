@@ -13,3 +13,4 @@ public/js
 public/fonts
 public/mix-manifest.json
 yarn.lock
+docker/logs/nginx/*.log

@@ -36,6 +36,18 @@
 	};
 </script>
 @endsection
+@section('headCSS')
+@if($withBg==1)
+<style>
+	body {
+		background-image: url('http://fcdb.ru/wp-content/uploads/2015/08/rn4gKCatwnY.jpg');
+		background-position: top center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+</style>
+@endif
+@endsection
 @section('content')
 	<head-panel
 			v-bind:team-data="teamData"

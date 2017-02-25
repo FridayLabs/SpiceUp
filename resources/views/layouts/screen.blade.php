@@ -20,6 +20,7 @@
         ]) !!};
     </script>
     @yield('headJS')
+    @yield('headCSS')
 </head>
 <body>
     <div id="app">

@@ -7,14 +7,15 @@ use View;
 
 class Widget extends Model
 {
+    protected $fillable = ["title", "data", "type"];
     protected $data = [];
     protected $beh;
 
-    public function __construct()
-    {
-        parent::__construct();
-        //$this->data = $this->parseData();
-    }
+//    public function __construct()
+//    {
+//        parent::__construct();
+//        //$this->data = $this->parseData();
+//    }
 
     public function getBehaviourAttribute()
     {

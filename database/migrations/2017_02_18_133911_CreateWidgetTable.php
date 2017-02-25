@@ -17,7 +17,7 @@ class CreateWidgetTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('type');
-            $table->text('data'); // json
+            $table->text('data')->nullable(); // json
             $table->timestamps();
         });
     }

@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,16 +23,19 @@ Route::post('/broadcasting/auth', function() {
     return 'ok';
 });
 
-Route::get('/test_screen/{id}', function ($id) {
+Route::get('/test_screen/{id}', function (Request $request, $id) {
 
     $screen = \App\Screen::where('public_id', $id)
         ->with('game.teamHome')
         ->with('game.teamAway')
         ->firstOrFail();
 
+    $withBg = $request->get("bg");
+
     return view('test_screen', [
         'screen' => $screen,
-        'game' => $screen->game
+        'game' => $screen->game,
+        'withBg' => $withBg
     ]);
 });
 Route::post('/state/create/{screenId}', 'ScreenStateController@store');

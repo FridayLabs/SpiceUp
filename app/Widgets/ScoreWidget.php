@@ -3,6 +3,7 @@
 namespace App\Widgets;
 
 use App\StateWidget;
+use App\Widget;
 
 class ScoreWidget extends Widget
 {

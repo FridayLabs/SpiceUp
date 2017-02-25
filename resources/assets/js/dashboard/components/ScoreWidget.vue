@@ -38,13 +38,13 @@
                     <td>{{goal.fullScore}}</td>
                     <td>{{goal.team.name}}</td>
                     <td>{{goal.player.name}}</td>
+                    <!--<td>-->
+                        <!--<button class="btn btn-warning btn-xs">-->
+                            <!--<i class="glyphicon glyphicon-edit"></i>-->
+                        <!--</button>-->
+                    <!--</td>-->
                     <td>
-                        <button class="btn btn-warning btn-xs">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-danger btn-xs" v-if="index == 0">
+                        <button class="btn btn-danger btn-xs" v-if="index == 0" @click="removeLastGoal">
                             <i class="glyphicon glyphicon-remove"></i>
                         </button>
                     </td>
@@ -136,6 +136,10 @@
             addGoal: function (teamType) {
                 this.newgoal.teamType = teamType;
                 this.showModal = true;
+            },
+            removeLastGoal: function() {
+                let lenght = this.goal_list.length;
+                this.goal_list.splice(lenght-1, 1);
             },
             changePosition: function (val) {
                 this.position = val;
