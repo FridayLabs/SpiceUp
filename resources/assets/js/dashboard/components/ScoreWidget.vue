@@ -62,7 +62,7 @@
                     <div class="col-xs-9">
                         <select v-model="newgoal.player" class="form-control">
                             <option v-for="(player, index) in getAllPlayers()" v-bind:value="player">
-                                {{player.name}}
+                                {{index}}) {{player.last_name}} {{player.first_name}} ({{player.position}})
                             </option>
                         </select>
                     </div>
@@ -82,30 +82,12 @@
                 home: {
                     name: "Team Home",
                     score: 0,
-                    players: [
-                        {
-                            id: 1,
-                            name: "Player Home 1"
-                        },
-                        {
-                            id: 2,
-                            name: "Player Home 2"
-                        },
-                        {
-                            id: 3,
-                            name: "Player Home 3"
-                        }
-                    ]
+                    players: []
                 },
                 away: {
                     name: "Team Home",
                     score: 0,
-                    players: [
-                        {
-                            id: 4,
-                            name: "Player Away 1"
-                        }
-                    ]
+                    players: []
                 }
             };
             return {
@@ -125,8 +107,7 @@
         created() {
             console.log("ScoreWidget component created");
             axios.get('/widget/get/'+this.stateWidgetId).then(function (r) {
-                this.is_active = r.data.is_active;
-                this.position = r.data.position;
+                this.parseData(r.data);
             }.bind(this)).catch(function () {
             });
         },
@@ -163,15 +144,25 @@
                 this.is_active = val;
             },
             save: function () {
-                axios.post('/widget/save/'+this.stateWidgetId, {
-                    is_active: this.is_active,
-                    position: this.position,
-                    data: this.data
-                }).then(function (r) {
+                axios.post('/widget/save/'+this.stateWidgetId, this.cumulateData()).then(function (r) {
                     console.log(r);
                 }).catch(function () {
-
+                    console.log("Error saving");
                 });
+            },
+            parseData: function(data) {
+                this.is_active = data.isActive;
+                this.position = data.position;
+                this.teams = data.teams;
+                this.goal_list = data.goalList;
+            },
+            cumulateData: function() {
+                return {
+                    goalList: this.goal_list,
+                    teams: this.teams,
+                    isActive: this.is_active,
+                    position: this.position
+                };
             }
         },
         mounted() {

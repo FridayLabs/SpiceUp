@@ -6,6 +6,7 @@ use App\Events\GoalEvent;
 use App\Events\TestEvent;
 use App\Screen;
 use App\StateWidget;
+use App\Widgets\ScoreWidget;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -45,31 +46,71 @@ class WidgetController extends Controller
 
     public function get(Request $request, $stateWidgetId) {
         $stateWidget = StateWidget::findOrFail($stateWidgetId);
-        return array(
-            "is_active" => $stateWidget->is_active,
+        $return = [
+            "isActive" => $stateWidget->is_active,
             "position" => $stateWidget->position,
-            "data" => json_decode($stateWidget->data, true),
-        );
+        ];
+        $data = json_decode($stateWidget->data, true);
+        switch ($stateWidget->widget->type) {
+            case "Score":
+                $screen = $stateWidget->state->screen;
+                $game = $screen->game;
+
+                $return["teams"] = [
+                    "home" => [
+                        "id" => $game->teamHome->id,
+                        "name" => $game->teamHome->title,
+                        "score" => $game->score_home,
+                        "players" => $game->teamHome->players()->orderBy("last_name")->get()
+                    ],
+                    "away" => [
+                        "id" => $game->teamAway->id,
+                        "name" => $game->teamAway->title,
+                        "score" => $game->score_away,
+                        "players" => $game->teamAway->players()->orderBy("last_name")->get()
+                    ]
+                ];
+                $return["goalList"] = (isset($data["goalList"]))?$data["goalList"]:[];
+                break;
+        };
+        
+        return $return;
     }
 
     public function save(Request $request, $stateWidgetId) {
+        $returnData = [];
         $stateWidget = StateWidget::findOrFail($stateWidgetId);
 
-        $data = $request->get("data");
-        $is_active = $request->get("is_active");
+        $isActive = $request->get("isActive");
         $position = $request->get("position");
 
-
-        
-        $stateWidget->data = json_encode($data);
-        $stateWidget->is_active = $is_active;
+        switch ($stateWidget->widget->type) {
+            case "Score":
+                $screen = $stateWidget->state->screen;
+                $game = $screen->game;
+                $reqTeams = $request->get("teams");
+                if ($game->score_home != $reqTeams["home"]["score"]) {
+                    $game->score_home = $reqTeams["home"]["score"];
+                    if($game->save()) {
+                        event(new GoalEvent($stateWidget, 'teamA', $game->score_home));
+                    }
+                }
+                if ($game->score_away != $reqTeams["away"]["score"]) {
+                    $game->score_away = $reqTeams["away"]["score"];
+                    if($game->save()) {
+                        event(new GoalEvent($stateWidget, 'teamB', $game->score_away));
+                    }
+                }
+                $stateWidget->data = json_encode(["goalList" => $request->get("goalList")]);
+                break;
+            
+        }
+        $stateWidget->is_active = $isActive;
         $stateWidget->position = $position;
-        $stateWidget->save();
-        
-        
-        
-        event(new GoalEvent($stateWidget, 'teamA', random_int(2,10)));
-        return array($stateWidget->title);
+        if($stateWidget->save()) {
+
+        }
+        return $returnData;
     }
 
     public function update(Request $request, $stateWidgetId)
