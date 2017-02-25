@@ -21,5 +21,8 @@ php artisan migrate:refresh --seed (refresh exist db)
 cd ./docker/
 docker-composer up -d nginx mysql
 ```
+Add to /etc/hosts IP_DOCKER spiceup.local
+
+And go to http://spiceup.local
 
 TODO: run migrate from workspace container
