@@ -13,4 +13,13 @@ yarn
 ```bash
 mysql -uroot -proot -e 'create database spiceup'
 php artisan migrate --seed
+php artisan migrate:refresh --seed (refresh exist db)
 ```
+
+### Run docker-compose enviroment
+```bash
+cd ./docker/
+docker-composer up -d nginx mysql
+```
+
+TODO: run migrate from workspace container
