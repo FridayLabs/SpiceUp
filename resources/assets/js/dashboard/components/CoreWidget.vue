@@ -1,6 +1,8 @@
 <template>
-    <div class="panel panel-default">
-        <div class="panel-heading">CORE Component</div>
+    <div class="panel panel-default" style="margin-top: 15px;">
+        <div class="panel-heading">
+            {{title}}
+        </div>
         <div class="panel-body">
             <slot></slot>
             <div class="row">
@@ -26,7 +28,7 @@
 
 <script>
     export default {
-        props: ["is_active", "position"],
+        props: ["is_active", "position", "title"],
         data: function () {
             return {
                 true_is_active: this.is_active,

@@ -16,10 +16,10 @@ window.app = new Vue({
 	data: window.state,
 	created: function () {
 		window.echo.channel('screen.' + window.screen.public_id)
-			.listen('.TimerStart', this.timerStart)
-			.listen('.TimerPause', this.timerPause)
-			.listen('.TimerEnd', this.timerEnd)
-			.listen('.App.Events.GoalEvent', this.addGoal)
+			.listen('.App.Events.Widgets.Timer.StartEvent', this.timerStart)
+			.listen('.App.Events.Widgets.Timer.PauseEvent', this.timerPause)
+			.listen('.App.Events.Widgets.Timer.StopEvent', this.timerEnd)
+			.listen('.App.Events.Widgets.Score.UpdateEvent', this.addGoal)
 			.listen('.ScoreDataUpdate', this.scoreDataUpdate)
 	},
 	methods: {

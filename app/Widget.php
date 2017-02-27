@@ -36,9 +36,17 @@ class Widget extends Model
         return json_decode($this->data, true);
     }
 
-    public function getVueTemplate()
+    public function getVueTemplate($stateWidgetId)
     {
-        return '<core_widget></core_widget>';
+        switch ($this->type) {
+            case "Score":
+                return '<widget_score state-widget-id="'.$stateWidgetId.'" title-component="Score component"></widget_score>';
+                break;
+            case "Timer":
+                return '<widget_timer state-widget-id="'.$stateWidgetId.'" title-component="Timer component"></widget_timer>';
+                break;
+        }
+
     }
     
 }

@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 class TeamsController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('permission:team_access');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

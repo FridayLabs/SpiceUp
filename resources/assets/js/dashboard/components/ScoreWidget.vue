@@ -1,5 +1,5 @@
 <template >
-    <core-widget v-bind:is_active="is_active" v-bind:position="position"
+    <core-widget v-bind:is_active="is_active" v-bind:position="position" v-bind:title="titleComponent"
                  v-on:onposition="changePosition"
                  v-on:onisactive="changeIsActive">
         <div class="row">
@@ -76,7 +76,7 @@
 <script>
 
     export default {
-        props: ["stateWidgetId"],
+        props: ["stateWidgetId","titleComponent"],
         data: function() {
             let teams = {
                 home: {

@@ -7,6 +7,8 @@ use App\Widget;
 use App\StateWidget;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -57,19 +59,57 @@ class DatabaseSeeder extends Seeder
             'title' => 'State 1',
             'screen_id' => $screen->id
         ]);
+        $widgets = [
+            [
+                'title' => 'score',
+                'type' => 'Score',
+                'data' => '[]'
+            ],
+            [
+                'title' => 'timer',
+                'type' => 'Timer',
+                'data' => '[]'
+            ]
+        ];
+        foreach ($widgets as $widgetData) {
+            $widget = Widget::create($widgetData);
+            StateWidget::create([
+                'state_id' => $state->id,
+                'position' => '[120,20]',
+                'data' => '',
+                'widget_id' => $widget->id
+            ]);
+        }
 
-        $widget = Widget::create([
-            'title' => 'score',
-            'type' => 'Score',
-            'data' => '[]'
+        $role = Role::create(['name' => 'superuser']);
+        $roleDirector = Role::create(['name' => 'director']);
+        $permissionNames = [
+            'screen_list',
+            'screen_view',
+            'screen_edit',
+            'screen_add',
+            'game_access',
+            'tournament_access',
+            'team_access',
+        ];
+        foreach ($permissionNames as $permissionName) {
+            Permission::create(['name' => $permissionName]);
+        }
+        $role->givePermissionTo($permissionNames);
+        $roleDirector->givePermissionTo([
+            'screen_view',
+            'screen_edit',
+            'screen_add',
         ]);
 
-        $stateWidget = StateWidget::create([
-            'state_id' => $state->id,
-            'position' => '[120,20]',
-            'data' => '',
-            'widget_id' => $widget->id
+        $user->assignRole('superuser');
+
+        $userDirector = User::create([
+            'name' => 'Director',
+            'email' => 'director@asd.ru',
+            'password' => bcrypt('123123')
         ]);
+        $userDirector->assignRole('director');
 
         // $this->call(UsersTableSeeder::class);
     }

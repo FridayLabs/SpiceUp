@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\GoalEvent;
+use App\Events\Widgets\Score\UpdateEvent;
 use App\Events\TestEvent;
+use App\Events\Widgets\Timer\PauseEvent;
+use App\Events\Widgets\Timer\StartEvent;
+use App\Events\Widgets\Timer\StopEvent;
 use App\Screen;
 use App\StateWidget;
 use App\Widgets\ScoreWidget;
@@ -72,6 +75,11 @@ class WidgetController extends Controller
                 ];
                 $return["goalList"] = (isset($data["goalList"]))?$data["goalList"]:[];
                 break;
+            case "Timer":
+                $screen = $stateWidget->state->screen;
+                $game = $screen->game;
+                $return["startedTime"] = (isset($data["startedTime"]))?$data["startedTime"]:null;
+                break;
         };
         
         return $return;
@@ -92,16 +100,30 @@ class WidgetController extends Controller
                 if ($game->score_home != $reqTeams["home"]["score"]) {
                     $game->score_home = $reqTeams["home"]["score"];
                     if($game->save()) {
-                        event(new GoalEvent($stateWidget, 'teamA', $game->score_home));
+                        event(new UpdateEvent($stateWidget, 'teamA', $game->score_home));
                     }
                 }
                 if ($game->score_away != $reqTeams["away"]["score"]) {
                     $game->score_away = $reqTeams["away"]["score"];
                     if($game->save()) {
-                        event(new GoalEvent($stateWidget, 'teamB', $game->score_away));
+                        event(new UpdateEvent($stateWidget, 'teamB', $game->score_away));
                     }
                 }
                 $stateWidget->data = json_encode(["goalList" => $request->get("goalList")]);
+                break;
+            case "Timer":
+                $screen = $stateWidget->state->screen;
+                $game = $screen->game;
+                $action = $request->get("action");
+                $startedTime = $request->get("startedTime");
+                if($action == "start") {
+                    event(new StartEvent($stateWidget, $startedTime));
+                } elseif ($action == "pause") {
+                    event(new PauseEvent($stateWidget, $startedTime));
+                } elseif ($action == "stop") {
+                    event(new StopEvent($stateWidget, $startedTime));
+                }
+                $stateWidget->data = json_encode(["startedTime" => $startedTime]);
                 break;
             
         }

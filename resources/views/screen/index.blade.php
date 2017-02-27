@@ -18,9 +18,15 @@
                         <tr>
                             <td>{{$screen->id}}</td>
                             <td>{{$screen->title}}</td>
-                            <td>{{$screen->public_id}}</td>
+                            <td>
+                                <a href="{{route('test_screen',['id'=>$screen->public_id])}}">
+                                {{$screen->public_id}}
+                                </a>
+                            </td>
                             <td>{{$screen->user->name}}</td>
-                            <td><a href="{{route('screenView', ['screenId'=>$screen->id])}}" class="btn btn-primary">View</a></td>
+                            <td>
+                                <a href="{{route('screenView', ['screenId'=>$screen->id])}}" class="btn btn-primary">View</a>
+                            </td>
                         </tr>
                         @endforeach
                     </table>

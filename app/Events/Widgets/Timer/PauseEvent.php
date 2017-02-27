@@ -1,18 +1,13 @@
 <?php
 
-namespace App\Events;
+namespace App\Events\Widgets\Timer;
 
 use App\StateWidget;
-use App\Widget;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class GoalEvent implements ShouldBroadcast
+class PauseEvent implements ShouldBroadcast
 {
     use SerializesModels;
 
@@ -20,19 +15,17 @@ class GoalEvent implements ShouldBroadcast
      * @var StateWidget
      */
     public $stateWidget;
-    public $score;
-    public $team;
+    public $startedTime;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(StateWidget $stateWidget, $team, $score)
+    public function __construct(StateWidget $stateWidget, $startedTime)
     {
         $this->stateWidget = $stateWidget;
-        $this->team = $team;
-        $this->score = $score;
+        $this->startedTime = $startedTime;
     }
 
     /**

@@ -6,11 +6,11 @@
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li><a href="{{ route('screens') }}">Screens</a></li>
-                <li class="active">Screen View #{{$screen->id}}</li>
+                <li class="active">Manage screen {{$screen->title}} #{{$screen->id}}</li>
             </ol>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Screen View #{{$screen->id}}
+                    Manage screen "{{$screen->title}}" #{{$screen->id}}
                 </div>
                 <div class="panel-body">
                     <ul class="nav nav-tabs">
@@ -24,8 +24,8 @@
                         <div role="tabpanel" class="tab-pane @if ($loop->first) active @endif" id="stateBlock_{{$state->id}}">
                             <div class="row">
                             @foreach ($state->widgets()->get() as $widgetLink)
-                                <div class="col-xs-4">
-                                    <widget_score state-widget-id="{{$widgetLink->id}}"></widget_score>
+                                <div class="col-xs-12 col-md-6 col-lg-4">
+                                    {!!$widgetLink->widget->getVueTemplate($widgetLink->id)!!}
                                 </div>
                             @endforeach
                             <div class="col-xs-4">

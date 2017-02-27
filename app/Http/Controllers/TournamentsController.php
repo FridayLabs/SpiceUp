@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 class TournamentsController extends Controller
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('permission:tournament_access');
+        //$this->middleware('log')->only('index');
+        //$this->middleware('subscribed')->except('store');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
